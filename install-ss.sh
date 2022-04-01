@@ -12,7 +12,7 @@ OS=`hostnamectl | grep -i system | cut -d: -f2`
 NAME="shadowsocks-libev"
 CONFIG_FILE="/etc/${NAME}/config.json"
 SERVICE_FILE="/etc/systemd/system/${NAME}.service"
-output=ss.txt
+output=/root/ss.txt
 
 V6_PROXY=""
 IP=`curl -sL -4 ip.sb`
