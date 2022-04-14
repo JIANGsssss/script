@@ -1479,7 +1479,7 @@ outputVmessKCP() {
 
 outputTrojan() {
 	if [[ "$xtls" == "true" ]]; then
-		link="trojan://${password}@${domain}:${port}#"
+		link="trojan://${password}@${domain}:${port}?security=xtls&encryption=none&type=${network}&flow=${flow}&sni=${domain}#v2cross.com"
 		echo -e "   ${BLUE}IP/域名(address): ${PLAIN} ${RED}${domain}${PLAIN}"
 		echo -e "   ${BLUE}端口(port)：${PLAIN}${RED}${port}${PLAIN}"
 		echo -e "   ${BLUE}密码(password)：${PLAIN}${RED}${password}${PLAIN}"
@@ -1488,6 +1488,8 @@ outputTrojan() {
 		echo -e "   ${BLUE}传输协议(network)：${PLAIN} ${RED}${network}${PLAIN}"
 		echo -e "   ${BLUE}底层安全传输(tls)：${PLAIN}${RED}XTLS${PLAIN}"
 		echo -e "   ${BLUE}Trojan链接:${PLAIN} $RED$link$PLAIN"
+		qrencode -o - -t utf8 "${link}"
+
 	else
 		link="trojan://${password}@${domain}:${port}#"
 		echo -e "   ${BLUE}IP/域名(address): ${PLAIN} ${RED}${domain}${PLAIN}"
@@ -1496,6 +1498,7 @@ outputTrojan() {
 		echo -e "   ${BLUE}传输协议(network)：${PLAIN} ${RED}${network}${PLAIN}"
 		echo -e "   ${BLUE}底层安全传输(tls)：${PLAIN}${RED}TLS${PLAIN}"
 		echo -e "   ${BLUE}Trojan链接:${PLAIN} $RED$link$PLAIN"
+		qrencode -o - -t utf8 "${link}"
 	fi
 }
 
@@ -1628,7 +1631,7 @@ showInfo() {
 			echo -e " ${BLUE}伪装域名/主机名(host)/SNI/peer名称：${PLAIN}${RED}${domain}${PLAIN}"
 			echo -e " ${BLUE}路径(path)：${PLAIN}${RED}${wspath}${PLAIN}"
 			echo -e " ${BLUE}底层安全传输(tls)：${PLAIN}${RED}TLS${PLAIN}"
-			link="vless://${uid}@${domain}:${port}?path=${wspath}&security=tls&encryption=none&headerType=none&type=${network}&flow=${flow}&sni=${domain}#v2cross"
+			link="vless://${uid}@${domain}:${port}?path=${wspath}&security=tls&encryption=none&headerType=none&type=${network}&flow=${flow}&sni=${domain}#v2cross.com"
 			qrencode -o - -t utf8 "${link}"
 		fi
 	fi
