@@ -1628,8 +1628,8 @@ showInfo() {
 			echo -e " ${BLUE}伪装域名/主机名(host)/SNI/peer名称：${PLAIN}${RED}${domain}${PLAIN}"
 			echo -e " ${BLUE}路径(path)：${PLAIN}${RED}${wspath}${PLAIN}"
 			echo -e " ${BLUE}底层安全传输(tls)：${PLAIN}${RED}TLS${PLAIN}"
-			link="vless://${uid}@${IP}:${port}?path=${wspath}&security=tls&encryption=none&headerType=none&type=${network}&flow=${flow}&sni=${domain}"
-			qrencode -o - -t utf8 ${link}
+			link="vless://${uid}@${domain}:${port}?path=${wspath}&security=tls&encryption=none&headerType=none&type=${network}&flow=${flow}&sni=${domain}"
+			qrencode -o - -t utf8 "${link}"
 		fi
 	fi
 }
